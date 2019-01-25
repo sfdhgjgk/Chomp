@@ -1,0 +1,139 @@
+/**
+ * Implements a 2-D array of characters
+ */
+
+public class CharMatrix
+{
+  // Fields:
+	private char[][] arrayOfChomp;
+ /**
+ * Constructor: creates a grid with dimensions rows, cols,
+ * and fills it with spaces
+ */
+  public CharMatrix(int rows, int cols)
+  {
+	  char[][] arrayOfChomp = new char[rows][cols];
+	  for(int i = 0; i < rows; i++)
+	    {
+	    	for(int p = 0; p < cols; p++)
+	        {
+	    		arrayOfChomp[i][p] = ' ';
+	        }
+	    }
+  }
+
+  
+  /**
+   * Constructor: creates a grid with dimensions rows , cols ,
+   * and fills it with the fill character
+   */
+  public CharMatrix(int rows, int cols, char fill)
+  {
+	char[][] arrayOfChomp = new char[rows][cols];
+    for(int i = 0; i < rows; i++)
+    {
+    	for(int p = 0; p < cols; p++)
+        {
+    		arrayOfChomp[i][p] = fill;
+        }
+    }
+  }
+
+  /**
+   * Returns the number of rows in grid
+   */
+  public int numRows()
+  {
+    return arrayOfChomp.length;
+  }
+
+  /**
+   * Returns the number of columns in grid
+   */
+  public int numCols()
+  {
+    return arrayOfChomp[0].length;}
+
+  /**
+   * Returns the character at row, col location
+   */
+  public char charAt(int row, int col)
+  {
+    char n;
+    n = arrayOfChomp[row][col];
+    return n;
+  }
+
+  /**
+   * Sets the character at row, col location to ch
+   */
+  public void setCharAt(int row, int col, char ch)
+  {
+    arrayOfChomp[row][col] = ch;
+  }
+
+  /**
+   * Returns true if the character at row, col is a SPACE,
+   * false otherwise
+   */
+  public boolean isEmpty(int row, int col)
+  {
+    if(arrayOfChomp[row][col] == ' ') {return true;}
+    else {return false;}
+  }
+
+  /**
+   * Fills the given rectangle with the fill characters.
+   * row0, col0 is the upper left corner and row1, col1 is the
+   * lower right corner of the rectangle.
+   */
+  public void fillRect(int row0, int col0, int row1, int col1, char fill)
+  {
+	for(int r = row0; r <= row1; r++) {
+		for (int c = col0; c <= col1; c++){
+			arrayOfChomp[r][c] = fill;
+		}
+	}
+  }
+
+  /**
+   * Fills the given rectangle with the SPACE characters.
+   * row0, col0 is the upper left corner and row1, col1 is the
+   * lower right corner of the rectangle.
+   */
+  public void clearRect(int row0, int col0, int row1, int col1)
+  {
+	  fillRect(row0, col0, row1, col1,' ');
+  }
+
+  /**
+   * Returns the count of all non-SPACE characters in row.
+   */
+  public int countInRow(int row)
+  {
+   int spaces = 0;
+   for(int i = 0; i < arrayOfChomp[row].length; i++)
+   {
+	   if(arrayOfChomp[row][i] == ' ')
+	   {
+		   spaces++;
+	   }
+   }
+   return (arrayOfChomp[row].length - spaces);
+  }
+
+  /**
+   * Returns the count of all non-SPACE characters in col.
+   */
+  public int countInCol(int col)
+  {
+int varable=0;
+	  
+	  for(int i=0;i<arrayOfChomp.length;i++)
+	  {
+		  if(arrayOfChomp[i][col]!=' ')
+			  varable++;
+	  }
+	  return varable;
+  }
+}
